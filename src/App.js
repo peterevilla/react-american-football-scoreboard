@@ -1,6 +1,6 @@
 //TODO: STEP 1 - Import the useState hook.
-import React, { useState } from "react";
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import "./App.css";
 import BottomRow from "./BottomRow";
 
@@ -9,6 +9,37 @@ function App() {
 
   let [home, setHome] = useState(0);
   let [away, setAway] = useState(0);
+  let [minutes, setMinutes] = useState(0);
+  let [seconds, setSeconds] = useState(0)
+
+  useEffect(() => {
+
+      setTimeout( () => {
+
+        if(seconds < 59) {
+        
+          setSeconds(seconds + 1)
+        
+        } else if(minutes < 11) {
+
+          
+          setSeconds(0)
+          setMinutes(minutes + 1)
+          
+        } else {
+
+          setSeconds(0)
+          setMinutes(0)
+          clearTimeout()
+        }
+        
+      }, 1000)
+    
+
+
+  })
+
+
   
   return (
     <div className="container">
@@ -21,7 +52,7 @@ function App() {
 
       <div className="home__score">{home}</div>
           </div>
-          <div className="timer">00:03</div>
+      <div className="timer">{minutes}:{seconds}</div>
           <div className="away">
             <h2 className="away__name">Tigers</h2>
       <div className="away__score">{away}</div>
@@ -39,6 +70,9 @@ function App() {
           <button onClick={() => setAway(away + 7)} className="awayButtons__touchdown">Away Touchdown</button>
           <button onClick={() => setAway(away + 3)} className="awayButtons__fieldGoal">Away Field Goal</button>
         </div>
+
+
+
       </section>
     </div>
   );
