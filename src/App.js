@@ -1,9 +1,6 @@
 //TODO: STEP 1 - Import the useState hook.
 import React, { useState } from "react";
-<<<<<<< HEAD
-=======
 import React from "react";
->>>>>>> 3a11a3fc47925817dd028a486772677a1efbf47b
 import "./App.css";
 import BottomRow from "./BottomRow";
 
